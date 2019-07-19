@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var authHelper = require('../helpers/auth');
 var moment = require('moment');
+var subscription = require('./subscriptions')
+var cache = require('memory-cache');
 var graph = require('@microsoft/microsoft-graph-client');
 
 /* GET /calendar */
@@ -12,6 +14,10 @@ router.get('/', async function(req, res, next) {
   const userName = req.cookies.graph_user_name;
 
   if (accessToken && userName) {
+    // Update the cache
+    let subscription = req.cookies.subscription;
+    cache.put(subscription.id, subscription);
+
     parms.user = userName;
 
     // Initialize Graph client

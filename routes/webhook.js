@@ -32,10 +32,8 @@
 
 	    // If all the clientStates are valid, then process the notification
 	    if (clientStatesValid) {
-	      for (let i = 0; i < req.body.value.length; i++) {
-	        const resource = req.body.value[i].resource;
-	        const subscriptionId = req.body.value[i].subscriptionId;
-	        processNotification(subscriptionId, resource, next);
+	      for (let i = 0; i < req.body.value.length; i++) {	      
+	        processNotification(req.body.value[i]);
 	      }
 	      // Send a status of 'Accepted'
 	      status = 202;
@@ -56,14 +54,21 @@
 	// Get subscription data from the database
 	// Retrieve the actual mail message data from Office 365.
 	// Send the message data to the socket.
-	async function processNotification(subscriptionId, resource, next) {
-	  const subDats = cache.get(subscriptionId);
+	async function processNotification(notification) {
+	  const subDats = cache.get(notification.subscriptionId);
 	  if (subDats==null){
 	  	 return
 	  }
-	  console.log("Getting the subscription data from id::"+subscriptionId)
+	  console.log("Getting the subscription data from id:: "+notification.subscriptionId+" changeType:: "+notification.changeType)
 	  console.log(subDats)
-	  console.log("Calling resourse"+resource)
+
+	  if (notification.changeType === 'deleted') {
+	  	 notification.id = notification.resourceData.id;
+	  	 sendEvent(notification);
+	  	 return;
+	  }
+	  console.log("Calling resourse"+notification.resource)
+
 	  const client = graph.Client.init({
 	      authProvider: (done) => {
 		        done(null, subDats.token);
@@ -71,12 +76,12 @@
 	    });
 	    try {
 	      const result = await client
-	      .api(resource)
+	      .api(notification.resource)
 	      .get();
 
 	      console.log('data from Push event:')
+	      result.changeType = notification.changeType
 	      console.log(result)
-
 	      sendEvent(result);
 
 	    } catch (err) {

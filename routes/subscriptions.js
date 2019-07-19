@@ -20,14 +20,15 @@ async function subscribe(accessToken) {
       .api('/subscriptions')
       .post(subscribeConfig.subscriptionConfiguration);
 
-      console.log("Subscription::"+result)
-      result.token = accessToken
-      cache.put(result.id, result)
-
+      console.log("Subscription::Success")
+      console.log(result)
+      return result;
     } catch (err) {
       console.log("Subscription::Failed")
       console.log(JSON.stringify(err.body, null, 2))
     }
+
+    return null;
 
 }
 

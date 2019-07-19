@@ -1,5 +1,5 @@
 <h2>Calendar</h2>
-<table class="table">
+<table class="table" id="event-table">
   <thead class="thead-light">
     <th scope="col">Subject</th>
     <th scope="col">Start</th>
@@ -12,7 +12,7 @@
         <td id="1">{{this.subject}}</td>
         <td id="2">{{this.start.dateTime}} ({{this.start.timeZone}})</td>
         <td id="3">{{this.end.dateTime}} ({{this.end.timeZone}})</td>
-        <td> <a class="btn" href="#edit_event" data-toggle="modal" data-target="#edit_event"><i class="icon-edit"></i> Edit</a> </td>
+        <td id="4"> <a class="btn" href="#edit_event" data-toggle="modal" data-target="#edit_event"><i class="icon-edit"></i> Edit</a> </td>
       </tr>
     {{/each}}
   </tbody>
