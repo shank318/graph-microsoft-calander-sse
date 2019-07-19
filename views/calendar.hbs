@@ -1,0 +1,38 @@
+<h2>Calendar</h2>
+<table class="table">
+  <thead class="thead-light">
+    <th scope="col">Subject</th>
+    <th scope="col">Start</th>
+    <th scope="col">End</th>
+    <th scope="col"> </th>
+  </thead>
+  <tbody>
+    {{#each events}}
+      <tr id="{{this.id}}">
+        <td id="1">{{this.subject}}</td>
+        <td id="2">{{this.start.dateTime}} ({{this.start.timeZone}})</td>
+        <td id="3">{{this.end.dateTime}} ({{this.end.timeZone}})</td>
+        <td> <a class="btn" href="#edit_event" data-toggle="modal" data-target="#edit_event"><i class="icon-edit"></i> Edit</a> </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div id="edit_event" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit appointment</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="subject" class="input-reset ba b--black-20 pa2 mb2 db w-100" value="{{this.subject}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
