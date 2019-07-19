@@ -63,3 +63,8 @@ You'll need the `NGROK_ID` value in the next section.
     > You can also attach the debugger included in Microsoft Visual Studio Code. For more information, see [Debugging in Visual Studio Code](https://code.visualstudio.com/Docs/editor/debugging).
 
 1. Open a browser and go to [http://localhost:3000](http://localhost:3000).
+
+## TODO list
+1. Replace the in-memory cache with database to store the subscriptions.
+2. I am storing the subscription data in cookie and updaing the in-memory cache on every page reload.(This is a kind of hack which will be solved after implementing the database)
+
