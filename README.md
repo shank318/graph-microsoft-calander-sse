@@ -9,6 +9,7 @@ This Node.js sample does the following.
 - Pulls down existing calendar events displays on web page.
 - Allows you to update the events and pushes the update back to the server.
 - Implement a webhook such that when something is changed on outlook.com you get the update on your local web page using SSE.
+- Read more about SSE [here](https://medium.com/@moinism/using-nodejs-for-uni-directional-event-streaming-sse-c80538e6e82e)
 
 ## Prerequisites
 <a name="prerequisites"></a>
