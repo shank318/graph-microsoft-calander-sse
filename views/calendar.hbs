@@ -23,15 +23,19 @@
 
     <!-- Modal content-->
     <div class="modal-content">
+    <form method="post" action="/calendar/edit">
       <div class="modal-header">
         <h4 class="modal-title">Edit appointment</h4>
       </div>
       <div class="modal-body">
-        <input type="text" id="subject" class="input-reset ba b--black-20 pa2 mb2 db w-100" value="{{this.subject}}">
+        <input type="text" name="subject" Placeholder="Edit subject" id="modal_subject" class="input-reset ba b--black-20 pa2 mb2 db w-100" >
       </div>
+        <input id="event_id" name="event_id" type="hidden">
       <div class="modal-footer">
+        <button type="submit" class="btn btn-default">Submit</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
 
   </div>

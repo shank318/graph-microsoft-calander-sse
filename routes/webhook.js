@@ -81,7 +81,8 @@
 
 	      console.log('data from Push event:')
 	      result.changeType = notification.changeType
-	      console.log(result)
+	      console.log(result);
+	     
 	      sendEvent(result);
 
 	    } catch (err) {
@@ -95,5 +96,6 @@
 	    	subscription.openConnections[i].emit('update', event);
 	  		}
 	}
+
 
 	module.exports = router;

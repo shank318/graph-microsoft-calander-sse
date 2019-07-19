@@ -12,9 +12,7 @@ router.get('/', async function(req, res, next) {
   if (code) {
     try {
       const accessToken = await authHelper.getTokenFromCode(code, res);
-	    const sub  = await subscription.subscribe(accessToken)
-      sub.token = accessToken;
-      res.cookie('subscription', sub, {maxAge: 3600000, httpOnly: true});
+      await subscription.subscribeAndCache(accessToken,res);
       // Redirect to home
       res.redirect('/');
     } catch (error) {

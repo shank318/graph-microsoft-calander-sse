@@ -32,5 +32,15 @@ async function subscribe(accessToken) {
 
 }
 
-exports.openConnections = openConnections
+async function subscribeAndCache(accessToken, res) {
+      const sub  = await subscribe(accessToken)
+      sub.token = accessToken;
+      // Save subscription in cookie 
+      // TODO :: Can be saved in DB instead
+      res.cookie('subscription', sub, {maxAge: 3600000, httpOnly: true});
+      cache.put(sub.id, sub);
+}
+
+exports.subscribeAndCache = subscribeAndCache;
+exports.openConnections = openConnections;
 exports.subscribe = subscribe;

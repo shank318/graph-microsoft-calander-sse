@@ -27,9 +27,13 @@ function createRow(data) {
 	var row =   table.insertRow(1);
 	row.setAttribute("id", data.id);
 	var cell1 = row.insertCell(0);
+	cell1.setAttribute("id", "1");
 	var cell2 = row.insertCell(1);
+	cell2.setAttribute("id", "2");
 	var cell3 = row.insertCell(2);
+	cell3.setAttribute("id", "3");
 	var cell4 = row.insertCell(3);
+	cell4.setAttribute("id", "4");
 
 	// Add some text to the new cells:
  	cell1.innerHTML = data.subject
@@ -37,3 +41,18 @@ function createRow(data) {
  	cell3.innerHTML = data.end.dateTime
  	cell4.innerHTML = ' <a class="btn" href="#edit_event" data-toggle="modal" data-target="#edit_event"><i class="icon-edit"></i> Edit</a> '
 }
+
+$('#edit_event').on('show.bs.modal', function (e) {
+
+    var _button = $(e.relatedTarget);
+
+    // console.log(_button, _button.parents("tr"));
+    var _row = _button.parents("tr");
+    var subject = _row.find("#1").text();
+    var id = _row.attr('id');
+    // console.log(_invoiceAmt, _chequeAmt);
+
+    $(this).find("#modal_subject").val(subject);
+    $(this).find("#event_id").val(id);
+  
+});
