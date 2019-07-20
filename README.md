@@ -21,7 +21,7 @@ This Node.js sample does the following.
 To use the Webhook sample, you need the following:
 
 - [Node.js](https://nodejs.org/) version 4 or 5.
-- [Follow this sample doc](https://docs.microsoft.com/en-us/outlook/rest/node-tutorial)
+- [Follow this sample doc for creating outlook developer account](https://docs.microsoft.com/en-us/outlook/rest/node-tutorial)
 - [Handlebar.js](https://handlebarsjs.com/)
 
 
