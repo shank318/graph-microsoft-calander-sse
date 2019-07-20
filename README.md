@@ -30,7 +30,6 @@ To use the Webhook sample, you need the following:
 The sample uses heroku as the development server. If you want to run this app on localhost you have to change the following.
 
 1. In .env file change the ```REDIRECT_URI=http://localhost:3000/autorize``` 
-2. In constants.js change the ```notificationUrl=http://localhost:3000/webhook```
 2. Setup tunnel for receving webooks on localhost
 
 we need a tunnel that can forward requests from a URL on the Internet to your localhost. If for any reason, you don't want to use a tunnel, see [Hosting without a tunnel](https://github.com/OfficeDev/Microsoft-Graph-Nodejs-Webhooks/wiki/Hosting-the-sample-without-a-tunnel). If you want a detailed explanation about why to use a tunnel, see [Why do I have to use a tunnel?](https://github.com/OfficeDev/Microsoft-Graph-Nodejs-Webhooks/wiki/Why-do-I-have-to-use-a-tunnel)
@@ -53,8 +52,7 @@ For this sample, we use [ngrok](https://ngrok.com/) to create the tunnel. To con
 You'll need the `NGROK_ID` value in the next section.
 
 ## Configure and run the web app
-2. open `constants.js` and replace `NGROK_ID` with the value in *https public URL* from the previous section.
-![](const)
+2. open `constants.js` and change the  `notificationUrl=https://{NGROK_ID}.ngrok.io/webhook` 
 
 1. Install the dependencies running the following command:
 
