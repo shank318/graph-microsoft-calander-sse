@@ -1,6 +1,6 @@
 exports.subscriptionConfiguration = {
   changeType: "Created,Updated,Deleted",
-  notificationUrl: "https://2fef971b.ngrok.io/webhook",
+  notificationUrl: "https://calendar-sse-app.herokuapp.com/webhook",
   resource: "/me/events",
   clientState: "cLIENTsTATEfORvALIDATION"
 };
