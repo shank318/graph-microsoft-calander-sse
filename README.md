@@ -18,6 +18,7 @@ To use the Webhook sample, you need the following:
 
 - [Node.js](https://nodejs.org/) version 4 or 5.
 - [Follow this sample doc](https://docs.microsoft.com/en-us/outlook/rest/node-tutorial)
+- [Handlebar.js](https://handlebarsjs.com/)
 
 
 ## Configure a tunnel for your localhost
@@ -68,4 +69,7 @@ You'll need the `NGROK_ID` value in the next section.
 ## TODO list
 1. Replace the in-memory cache with database to store the subscriptions.
 2. I am storing the subscription data in cookie and updaing the in-memory cache on every page reload.(This is a kind of hack which will be solved after implementing the database)
+
+## Improvements
+Currently the Backend and frontend are tied to each other, backend can be separated and frontend can talk to it via rest API.
 
