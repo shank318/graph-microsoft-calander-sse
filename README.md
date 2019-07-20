@@ -11,6 +11,10 @@ This Node.js sample does the following.
 - Implement a webhook such that when something is changed on outlook.com you get the update on your local web page using SSE.
 - Read more about SSE [here](https://medium.com/@moinism/using-nodejs-for-uni-directional-event-streaming-sse-c80538e6e82e)
 
+## Live demo
+
+- [Calendar app](https://calendar-sse-app.herokuapp.com)
+
 ## Prerequisites
 <a name="prerequisites"></a>
 
@@ -21,9 +25,15 @@ To use the Webhook sample, you need the following:
 - [Handlebar.js](https://handlebarsjs.com/)
 
 
-## Configure a tunnel for your localhost
+## Setup on localhost
 
-The sample uses localhost as the development server. For this reason, we need a tunnel that can forward requests from a URL on the Internet to your localhost. If for any reason, you don't want to use a tunnel, see [Hosting without a tunnel](https://github.com/OfficeDev/Microsoft-Graph-Nodejs-Webhooks/wiki/Hosting-the-sample-without-a-tunnel). If you want a detailed explanation about why to use a tunnel, see [Why do I have to use a tunnel?](https://github.com/OfficeDev/Microsoft-Graph-Nodejs-Webhooks/wiki/Why-do-I-have-to-use-a-tunnel)
+The sample uses heroku as the development server. If you want to run this app on localhost you have to change the following.
+
+1. In .env file change the ```REDIRECT_URI=http://localhost:3000/autorize``` 
+2. In constants.js change the ```notificationUrl=http://localhost:3000/webhook```
+2. Setup tunnel for receving webooks on localhost
+
+we need a tunnel that can forward requests from a URL on the Internet to your localhost. If for any reason, you don't want to use a tunnel, see [Hosting without a tunnel](https://github.com/OfficeDev/Microsoft-Graph-Nodejs-Webhooks/wiki/Hosting-the-sample-without-a-tunnel). If you want a detailed explanation about why to use a tunnel, see [Why do I have to use a tunnel?](https://github.com/OfficeDev/Microsoft-Graph-Nodejs-Webhooks/wiki/Why-do-I-have-to-use-a-tunnel)
 
 For this sample, we use [ngrok](https://ngrok.com/) to create the tunnel. To configure ngrok:
 
