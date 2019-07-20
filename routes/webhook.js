@@ -6,6 +6,8 @@
 	var subscription = require('./subscriptions')
 	var subscribeConfig = require('../constants')
 
+
+    /* Webhook endpoint*/
 	router.post('/', async function(req, res, next) {
 	  let status;
 	  let clientStatesValid;
@@ -51,9 +53,9 @@
 	});
 
 
-	// Get subscription data from the database
-	// Retrieve the actual mail message data from Office 365.
-	// Send the message data to the socket.
+	// Get subscription data from the cache
+	// Retrieve the actual event from the calendar api.
+	// Send the event data to the client via SSE.
 	async function processNotification(notification) {
 	  const subDats = cache.get(notification.subscriptionId);
 	  if (subDats==null){

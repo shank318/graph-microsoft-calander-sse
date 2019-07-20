@@ -18,6 +18,7 @@ router.get('/', async function(req, res, next) {
     if (subscription != null){
       cache.put(subscription.id, subscription);
     }else{
+      // If the  subscription is not present, subscribe again
        await subscriptionObj.subscribeAndCache(accessToken,res);
     }
 
@@ -60,6 +61,7 @@ router.get('/', async function(req, res, next) {
   }
 });
 
+// Edit an event
 router.post('/edit', async function(req, res, next) {
   let parms = { title: 'Calendar', active: { calendar: true } };
 
@@ -72,7 +74,7 @@ router.post('/edit', async function(req, res, next) {
     const updateEvent = {
       subject : req.body.subject
     }
-    console.log(updateEvent)
+  
     // Initialize Graph client
     const client = graph.Client.init({
       authProvider: (done) => {
@@ -81,7 +83,6 @@ router.post('/edit', async function(req, res, next) {
     });
     
     try {
-      // Get the first 10 events for the coming week
       const result = await client
       .api('/me/events/'+req.body.event_id)
       .update(updateEvent);

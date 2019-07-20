@@ -7,6 +7,7 @@ var subscribeConfig = require('../constants')
 var openConnections = [];
 
 
+/* Subscribe to Microsoft events */
 async function subscribe(accessToken) {
   subscribeConfig.subscriptionConfiguration["expirationDateTime"] = new Date(Date.now() + 86400000).toISOString();
 	const client = graph.Client.init({
@@ -32,11 +33,12 @@ async function subscribe(accessToken) {
 
 }
 
+/* Subscribe and cache the result */
+// TODO :: Can be saved in DB instead
 async function subscribeAndCache(accessToken, res) {
       const sub  = await subscribe(accessToken)
       sub.token = accessToken;
       // Save subscription in cookie 
-      // TODO :: Can be saved in DB instead
       res.cookie('subscription', sub, {maxAge: 3600000, httpOnly: true});
       cache.put(sub.id, sub);
 }

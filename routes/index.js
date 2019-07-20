@@ -21,6 +21,7 @@
     res.render('index', parms);
   });
 
+  /* Subscribe for SSE */
   router.get('/events/', function (req, res) {
   	
   	res.writeHead(200, {
@@ -37,7 +38,9 @@
 
     	subscription.openConnections.push(req);
 
+      // Close the SSE
     	req.on('close', function() {
+       console.log("SSE:: Closed") ;
       for (var i = 0; i < subscription.openConnections.length; i++) {
         if (subscription.openConnections[i] == req) {
           subscription.openConnections.splice(i, 1);
