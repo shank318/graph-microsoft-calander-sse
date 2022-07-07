@@ -15,7 +15,7 @@
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "memory-cache": "^0.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "morgan": "~1.9.1",
     "simple-oauth2": "^2.2.1"
   }
